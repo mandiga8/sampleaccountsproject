@@ -15,9 +15,13 @@ namespace AccountsProject.Repositories
         public IEnumerable<Models.PurchaseOrder> GetPurchaseOrders()
         {
             return appDbContext.PurchaseOrders
-                    .Include(c => c.Supplier)
                     .ToList();
             //return appDbContext.PurchaseOrders;
+        }
+
+        public Models.PurchaseOrder GetPurchaseOrder(int SupplierID)
+        {
+            return appDbContext.PurchaseOrders.Find(SupplierID)!;
         }
 
         public string CreatePurchaseOrder(Models.PurchaseOrder purchaseOrder)

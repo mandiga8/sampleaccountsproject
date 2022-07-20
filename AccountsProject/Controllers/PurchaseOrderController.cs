@@ -1,4 +1,5 @@
-﻿using AccountsProject.Repositories;
+﻿using AccountsProject.Models;
+using AccountsProject.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,9 +17,9 @@ namespace AccountsProject.Controllers
             this.purchaseOrderRepository = purchaseOrderRepository;
         }
 
-        // GET: api/<PurchaseOrderController>
         [HttpGet]
-        public IActionResult Get()
+        [Route("GetPurchaseOrders")]
+        public IActionResult GetPurchaseOrders()
         {
             try
             {
@@ -31,16 +32,23 @@ namespace AccountsProject.Controllers
             }
         }
 
-        // GET api/<PurchaseOrderController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("GetPurchaseOrder")]
+        public IActionResult GetPurchaseOrder(int id)
         {
-            return "value";
+            try
+            {
+                return Ok(purchaseOrderRepository.GetPurchaseOrder(id));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // POST api/<PurchaseOrderController>
         [HttpPost]
-        public IActionResult Post([FromBody] string value)
+        [Route("CreatePurchaseOrder")]
+        public IActionResult CreatePurchaseOrder([FromBody] PurchaseOrder purchaseOrder)
         {
             try
             {
@@ -53,15 +61,15 @@ namespace AccountsProject.Controllers
 
         }
 
-        // PUT api/<PurchaseOrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("UpdatePurchaseOrder")]
+        public void UpdatePurchaseOrder(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<PurchaseOrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("DeletePurchaseOrder")]
+        public void DeletePurchaseOrder(int id)
         {
         }
     }
