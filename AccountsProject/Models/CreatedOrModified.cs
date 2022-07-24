@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AccountsProject.Models
 {
@@ -8,7 +9,11 @@ namespace AccountsProject.Models
         [Required]
         public DateTime Created { get; set; }
         public DateTime? Modified { get; set; }
-        public int UserID { get; set; }
 
+        //[ForeignKey("User")]
+        public int CreatedUserID { get; set; }
+
+        //[ForeignKey("User")]
+        public int ModifiedUserID { get; set; }
     }
 }

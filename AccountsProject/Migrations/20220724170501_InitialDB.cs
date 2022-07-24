@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccountsProject.Migrations
 {
-    public partial class InitialDb1 : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,8 @@ namespace AccountsProject.Migrations
                     Void = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserID = table.Column<int>(type: "int", nullable: false)
+                    CreatedUserID = table.Column<int>(type: "int", nullable: false),
+                    ModifiedUserID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,7 +54,8 @@ namespace AccountsProject.Migrations
                     Void = table.Column<bool>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserID = table.Column<int>(type: "int", nullable: false)
+                    CreatedUserID = table.Column<int>(type: "int", nullable: false),
+                    ModifiedUserID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

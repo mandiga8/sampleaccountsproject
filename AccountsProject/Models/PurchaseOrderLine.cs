@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AccountsProject.Models
 {
-    public class PurchaseOrderLine
+    public class PurchaseOrderLine : CreatedOrModified
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

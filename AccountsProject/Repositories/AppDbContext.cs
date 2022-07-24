@@ -28,12 +28,17 @@ namespace AccountsProject.Repositories
 
             foreach (var entityEntry in changedEntriesCopy)
             {
-                entityEntry.Property("UserID").CurrentValue = 1;
-
                 if (entityEntry.State == EntityState.Added)
+                {
                     entityEntry.Property("Created").CurrentValue = savedTime;
+                    entityEntry.Property("CreatedUserID").CurrentValue = 1;
+                }
                 else if (entityEntry.State == EntityState.Modified)
+                {
                     entityEntry.Property("Updated").CurrentValue = savedTime;
+                    entityEntry.Property("ModifiedUserID").CurrentValue = 2;
+
+                }
 
                 //if (entityEntry.Metadata.FindProperty("Created") != null && entityEntry.Property("Created").CurrentValue == null)
                 //{

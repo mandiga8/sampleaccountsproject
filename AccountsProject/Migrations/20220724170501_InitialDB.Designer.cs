@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountsProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220716221113_InitialDb1")]
-    partial class InitialDb1
+    [Migration("20220724170501_InitialDB")]
+    partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace AccountsProject.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CreatedUserID")
+                        .HasColumnType("int");
+
                     b.Property<int>("CurrencyId")
                         .HasColumnType("int");
 
@@ -49,6 +52,9 @@ namespace AccountsProject.Migrations
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ModifiedUserID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("PODate")
                         .HasColumnType("datetime2");
@@ -77,9 +83,6 @@ namespace AccountsProject.Migrations
 
                     b.Property<decimal>("TotalVat")
                         .HasColumnType("decimal(18,4)");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Void")
                         .HasColumnType("bit");
@@ -113,8 +116,14 @@ namespace AccountsProject.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CreatedUserID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ModifiedUserID")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -129,9 +138,6 @@ namespace AccountsProject.Migrations
                     b.Property<string>("Postcode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
 
                     b.Property<string>("VatReg")
                         .IsRequired()
